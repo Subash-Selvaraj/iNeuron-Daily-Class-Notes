@@ -14,5 +14,13 @@ def insert():
         collection.insert_one({name:number})
         return jsonify("Successfully inserted")
 
+#create a function to update a data into the database by using mongo db
+@app.route('/update/mongo',methods=['POST'])
+def update():
+    if request.method =='POST':
+        name = request.json['name']
+        collection.update_one({name:name},{"$set":{name}}) #mistakes
+        return jsonify("Successfully updated")
+
 if __name__ == '__main__':
     app.run()
